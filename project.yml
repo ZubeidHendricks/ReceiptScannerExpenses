@@ -41,3 +41,26 @@ targets:
         SWIFT_VERSION: "5.0"
         GENERATE_INFOPLIST_FILE: NO
         CODE_SIGN_STYLE: Automatic
+
+  ReceiptScannerExpensesTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - Tests
+      - path: Sources/ReceiptService.swift
+    settings:
+      base:
+        PRODUCT_NAME: ReceiptScannerExpensesTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.zubeid.receiptscannerexpenses.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+
+schemes:
+  Tests:
+    build:
+      targets:
+        ReceiptScannerExpensesTests: [test]
+    test:
+      targets:
+        - ReceiptScannerExpensesTests
