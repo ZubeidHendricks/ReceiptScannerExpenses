@@ -17,15 +17,15 @@ targets:
     platform: iOS
     sources:
       - Sources
+      - Resources
     dependencies:
       - package: AppFactoryKit
         product: AppFactoryKit
-      - package: AppFactoryKit
-        product: AppFactoryKitRevenueCat
     info:
       path: Sources/Info.plist
       properties:
-        CFBundleDisplayName: "ReceiptScannerExpenses"
+        CFBundleDisplayName: "Receipt Scanner"
+        ITSAppUsesNonExemptEncryption: false
         UILaunchScreen: {}
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
         NSCameraUsageDescription: "ReceiptScannerExpenses uses the camera to capture and process your content."
@@ -41,6 +41,7 @@ targets:
         SWIFT_VERSION: "5.0"
         GENERATE_INFOPLIST_FILE: NO
         CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
 
   ReceiptScannerExpensesTests:
     type: bundle.unit-test
