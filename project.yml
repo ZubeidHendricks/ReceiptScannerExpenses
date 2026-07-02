@@ -9,7 +9,7 @@ options:
 packages:
   AppFactoryKit:
     url: https://github.com/ZubeidHendricks/AppFactoryKit
-    from: "0.1.0"
+    exactVersion: "0.1.1"
 
 targets:
   ReceiptScannerExpenses:
