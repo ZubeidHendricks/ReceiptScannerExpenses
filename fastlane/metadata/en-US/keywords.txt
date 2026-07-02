@@ -1,0 +1,1 @@
+receipt scanner,expense tracker,receipts,expenses,tax,ocr,spending,bookkeeping,scan

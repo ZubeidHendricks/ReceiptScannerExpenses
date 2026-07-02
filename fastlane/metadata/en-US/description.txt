@@ -1,0 +1,21 @@
+Stop stuffing receipts in drawers. Receipt Scanner reads them with your camera and files them into a clean expense log.
+
+SNAP & FORGET
+• Photograph any receipt
+• Merchant and total detected automatically, on-device
+• One tap to confirm and log
+
+READY FOR TAX SEASON
+• Running expense total
+• Full history of every receipt
+• CSV export for your accountant (Pro)
+
+All processing happens on your iPhone — your financial life is never uploaded anywhere.
+SUBSCRIPTIONS
+Pro is an auto-renewing subscription (yearly or weekly). Payment is charged to your Apple ID at confirmation; it renews unless cancelled at least 24 hours before the period ends. Manage or cancel anytime in your Apple ID settings.
+
+PRIVACY FIRST
+Everything runs on your device — nothing is uploaded.
+
+Terms: https://zubeidhendricks.github.io/ReceiptScannerExpenses/terms.html
+Privacy: https://zubeidhendricks.github.io/ReceiptScannerExpenses/privacy.html
