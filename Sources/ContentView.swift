@@ -21,6 +21,7 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 18) {
                     totalCard
+                    monthCard
                     PhotosPicker(selection: $pickerItem, matching: .images) {
                         Label("Scan a Receipt", systemImage: "doc.text.viewfinder")
                             .frame(maxWidth: .infinity, minHeight: 52)
@@ -54,6 +55,26 @@ struct ContentView: View {
         }
         .frame(maxWidth: .infinity).padding(.vertical, 18)
         .background(RoundedRectangle(cornerRadius: 18).fill(.green.opacity(0.12)))
+    }
+
+    // Competence feedback per ../PLAYBOOK.md: this month's captured total plus
+    // a best-month personal record. No badges or points.
+    @ViewBuilder
+    private var monthCard: some View {
+        if !store.expenses.isEmpty {
+            HStack {
+                monthStat("Captured This Month", store.thisMonthTotal)
+                monthStat("Best Month", store.bestMonthTotal)
+            }
+        }
+    }
+    private func monthStat(_ title: String, _ value: Double) -> some View {
+        VStack(spacing: 4) {
+            Text(value, format: .currency(code: "USD")).font(.title3.bold())
+            Text(title).font(.caption).foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity).padding(.vertical, 14)
+        .background(RoundedRectangle(cornerRadius: 12).fill(.quaternary.opacity(0.5)))
     }
 
     private func pendingCard(_ r: ParsedReceipt) -> some View {

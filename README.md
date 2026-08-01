@@ -30,6 +30,13 @@ purchases). To go live:
 
 Bundle id: `com.zubeid.receiptexpense`
 
+## Engagement (see ../PLAYBOOK.md)
+
+Mechanic: **competence feedback** only (max-2 rule). A compact card shows this
+month's captured-expense total plus a "best month" personal record computed from
+the expense log. Evidence of real receipts captured, never app opens. No points,
+badges, or leaderboards.
+
 ## Ship to TestFlight
 
 This app ships with a Fastlane lane + GitHub Actions workflow. One-time account

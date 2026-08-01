@@ -78,6 +78,28 @@ final class ExpenseStore: ObservableObject {
 
     var total: Double { expenses.reduce(0) { $0 + $1.amount } }
     var sorted: [Expense] { expenses.sorted { $0.date > $1.date } }
+
+    // Competence feedback per ../PLAYBOOK.md: this month's captured total plus
+    // a "best month" personal record — evidence of real receipts captured,
+    // never app opens. Static so tests can drive the logic with fixed arrays.
+    static func monthTotal(in expenses: [Expense], year: Int, month: Int, calendar: Calendar = .current) -> Double {
+        expenses.filter {
+            let c = calendar.dateComponents([.year, .month], from: $0.date)
+            return c.year == year && c.month == month
+        }.reduce(0) { $0 + $1.amount }
+    }
+    static func bestMonthTotal(in expenses: [Expense], calendar: Calendar = .current) -> Double {
+        Dictionary(grouping: expenses) { e -> String in
+            let c = calendar.dateComponents([.year, .month], from: e.date)
+            return "\(c.year ?? 0)-\(c.month ?? 0)"
+        }
+        .values.map { $0.reduce(0) { $0 + $1.amount } }.max() ?? 0
+    }
+    var thisMonthTotal: Double {
+        let c = Calendar.current.dateComponents([.year, .month], from: Date())
+        return Self.monthTotal(in: expenses, year: c.year ?? 0, month: c.month ?? 0)
+    }
+    var bestMonthTotal: Double { Self.bestMonthTotal(in: expenses) }
     func reachedFreeLimit(isSubscribed: Bool) -> Bool { !isSubscribed && expenses.count >= Self.freeLimit }
 
     func add(_ e: Expense) { expenses.append(e); save() }

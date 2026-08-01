@@ -9,7 +9,7 @@ options:
 packages:
   AppFactoryKit:
     url: https://github.com/ZubeidHendricks/AppFactoryKit
-    exactVersion: "0.1.1"
+    exactVersion: "0.1.2"
 
 targets:
   ReceiptScannerExpenses:
@@ -35,7 +35,7 @@ targets:
       base:
         PRODUCT_NAME: ReceiptScannerExpenses
         PRODUCT_BUNDLE_IDENTIFIER: com.zubeid.receiptexpense
-        MARKETING_VERSION: "1.0.0"
+        MARKETING_VERSION: "1.1.0"
         CURRENT_PROJECT_VERSION: "1"
         TARGETED_DEVICE_FAMILY: "1"
         SWIFT_VERSION: "5.0"

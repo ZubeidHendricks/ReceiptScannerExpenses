@@ -28,7 +28,14 @@ final class StoreKit2PurchaseProvider: PurchaseProvider, @unchecked Sendable {
         let products = try await Product.products(for: ids)
         let byID = Dictionary(uniqueKeysWithValues: products.map { ($0.id, $0) })
         // Preserve the requested display order.
-        return ids.compactMap { byID[$0] }.map(Self.map)
+        let mapped = ids.compactMap { byID[$0] }.map(Self.map)
+        // Surface "the store returned nothing" as an error. An empty list is
+        // indistinguishable from success and renders a paywall with no plans;
+        // this happens while products still lack App Store Connect metadata.
+        if mapped.isEmpty, !ids.isEmpty {
+            throw PurchaseError.productNotFound(ids.joined(separator: ", "))
+        }
+        return mapped
     }
 
     func purchase(_ product: SubscriptionProduct) async throws -> PurchaseResult {
